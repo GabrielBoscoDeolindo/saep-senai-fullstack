@@ -47,7 +47,6 @@ const StockMovement = () => {
       
       setFormData(prev => ({ ...prev, quantity: 1 }));
 
-      [cite_start]
       if (response.data.warning) {
         setMessage({ text: response.data.warning, type: 'warning' });
         alert(response.data.warning);
@@ -62,18 +61,19 @@ const StockMovement = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    // Fundo da página escuro
+    <div className="min-h-screen bg-gray-900">
       <Navbar />
       
       <div className="container mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Gestão de Estoque</h2>
+        <h2 className="text-2xl font-bold text-white mb-6">Gestão de Estoque</h2>
 
-        {/* Mensagens */}
+        {/* Mensagens de Feedback */}
         {message.text && (
           <div className={`p-4 rounded mb-6 text-center font-bold ${
-            message.type === 'warning' ? 'bg-yellow-100 text-yellow-800 border border-yellow-400' :
-            message.type === 'error' ? 'bg-red-100 text-red-800 border border-red-400' :
-            'bg-green-100 text-green-800'
+            message.type === 'warning' ? 'bg-yellow-900/50 text-yellow-200 border border-yellow-600' :
+            message.type === 'error' ? 'bg-red-900/50 text-red-200 border border-red-600' :
+            'bg-green-900/50 text-green-200 border border-green-600'
           }`}>
             {message.text}
           </div>
@@ -82,18 +82,17 @@ const StockMovement = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Formulário de Movimentação */}
-          <div className="lg:col-span-1 bg-white p-6 rounded-lg shadow h-fit">
-            <h3 className="text-lg font-bold mb-4 border-b pb-2">Nova Movimentação</h3>
+          <div className="lg:col-span-1 bg-gray-800 border border-gray-700 p-6 rounded-lg shadow h-fit text-white">
+            <h3 className="text-lg font-bold mb-4 border-b border-gray-700 pb-2">Nova Movimentação</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               
-              [cite_start]
               <div>
-                <label className="block text-sm font-bold mb-1">Produto</label>
+                <label className="block text-sm font-bold mb-1 text-gray-300">Produto</label>
                 <select 
                   name="product" 
                   value={formData.product} 
                   onChange={handleChange}
-                  className="w-full border p-2 rounded bg-white"
+                  className="w-full border border-gray-600 p-2 rounded bg-gray-700 text-white focus:outline-none focus:border-[#512ED9]"
                   required
                 >
                   <option value="">Selecione um produto...</option>
@@ -103,10 +102,9 @@ const StockMovement = () => {
                 </select>
               </div>
 
-              [cite_start]
               <div>
-                <label className="block text-sm font-bold mb-1">Tipo</label>
-                <div className="flex space-x-4 mt-2">
+                <label className="block text-sm font-bold mb-1 text-gray-300">Tipo</label>
+                <div className="flex space-x-4 mt-2 bg-gray-700 p-2 rounded border border-gray-600">
                   <label className="flex items-center cursor-pointer">
                     <input 
                       type="radio" 
@@ -114,9 +112,9 @@ const StockMovement = () => {
                       value="IN"
                       checked={formData.movement_type === 'IN'}
                       onChange={handleChange}
-                      className="mr-2"
+                      className="mr-2 accent-[#512ED9]"
                     />
-                    <span className="text-green-600 font-bold">Entrada</span>
+                    <span className="text-green-400 font-bold">Entrada</span>
                   </label>
                   <label className="flex items-center cursor-pointer">
                     <input 
@@ -125,52 +123,51 @@ const StockMovement = () => {
                       value="OUT"
                       checked={formData.movement_type === 'OUT'}
                       onChange={handleChange}
-                      className="mr-2"
+                      className="mr-2 accent-[#512ED9]"
                     />
-                    <span className="text-red-600 font-bold">Saída</span>
+                    <span className="text-red-400 font-bold">Saída</span>
                   </label>
                 </div>
               </div>
 
               {/* Quantidade */}
               <div>
-                <label className="block text-sm font-bold mb-1">Quantidade</label>
+                <label className="block text-sm font-bold mb-1 text-gray-300">Quantidade</label>
                 <input 
                   type="number" 
                   name="quantity" 
                   value={formData.quantity} 
                   onChange={handleChange}
                   min="1"
-                  className="w-full border p-2 rounded"
+                  className="w-full border border-gray-600 p-2 rounded bg-gray-700 text-white focus:outline-none focus:border-[#512ED9]"
                   required 
                 />
               </div>
 
-              [cite_start]
               <div>
-                <label className="block text-sm font-bold mb-1">Data e Hora</label>
+                <label className="block text-sm font-bold mb-1 text-gray-300">Data e Hora</label>
                 <input 
                   type="datetime-local" 
                   name="movement_date" 
                   value={formData.movement_date} 
                   onChange={handleChange}
-                  className="w-full border p-2 rounded"
+                  className="w-full border border-gray-600 p-2 rounded bg-gray-700 text-white focus:outline-none focus:border-[#512ED9]"
                   required 
                 />
               </div>
 
-              <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition">
+              <button type="submit" className="w-full bg-[#512ED9] text-white font-bold py-2 rounded hover:opacity-90 transition">
                 CONFIRMAR
               </button>
             </form>
           </div>
 
-          [cite_start]
-          <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow">
-            <h3 className="text-lg font-bold mb-4 border-b pb-2">Histórico Recente</h3>
+          {/* Histórico Recente */}
+          <div className="lg:col-span-2 bg-gray-800 border border-gray-700 p-6 rounded-lg shadow">
+            <h3 className="text-lg font-bold mb-4 border-b border-gray-700 pb-2 text-white">Histórico Recente</h3>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left">
-                <thead className="bg-gray-100 text-gray-600 uppercase">
+              <table className="w-full text-sm text-left text-gray-300">
+                <thead className="bg-gray-700 text-gray-200 uppercase">
                   <tr>
                     <th className="p-3">Data</th>
                     <th className="p-3">Tipo</th>
@@ -181,18 +178,18 @@ const StockMovement = () => {
                 </thead>
                 <tbody>
                   {movements.map((mov) => (
-                    <tr key={mov.id} className="border-b hover:bg-gray-50">
+                    <tr key={mov.id} className="border-b border-gray-700 hover:bg-gray-700/50 transition">
                       <td className="p-3">{new Date(mov.movement_date).toLocaleString()}</td>
                       <td className="p-3">
                         <span className={`px-2 py-1 rounded text-xs font-bold ${
-                          mov.movement_type === 'IN' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                          mov.movement_type === 'IN' ? 'bg-green-900 text-green-300 border border-green-700' : 'bg-red-900 text-red-300 border border-red-700'
                         }`}>
                           {mov.movement_type === 'IN' ? 'ENTRADA' : 'SAÍDA'}
                         </span>
                       </td>
-                      <td className="p-3 font-medium">{mov.product_name}</td>
+                      <td className="p-3 font-medium text-white">{mov.product_name}</td>
                       <td className="p-3">{mov.quantity}</td>
-                      <td className="p-3 text-gray-500">{mov.user_name}</td>
+                      <td className="p-3 text-gray-400">{mov.user_name}</td>
                     </tr>
                   ))}
                 </tbody>

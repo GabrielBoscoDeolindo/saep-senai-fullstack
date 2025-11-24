@@ -52,7 +52,7 @@ const ProductForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
         <h2 className="text-2xl font-bold mb-6 text-gray-800">
           {isEditMode ? 'Editar Produto' : 'Novo Produto'}

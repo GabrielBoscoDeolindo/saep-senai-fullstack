@@ -24,36 +24,36 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">SAEP - Almoxarifado</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-700">
+        <h1 className="text-2xl font-bold text-center text-white mb-6">SAEP - Almoxarifado</h1>
         
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 text-sm text-center">
+          <div className="bg-red-900/50 border border-red-600 text-red-200 px-4 py-2 rounded mb-4 text-sm text-center">
             {error}
           </div>
         )}
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">Usuário</label>
+            <label className="block text-gray-300 text-sm font-bold mb-2">Usuário</label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-[#512ED9]"
               placeholder="Digite seu usuário"
               required
             />
           </div>
           
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">Senha</label>
+            <label className="block text-gray-300 text-sm font-bold mb-2">Senha</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-[#512ED9]"
               placeholder="Digite sua senha"
               required
             />
@@ -61,7 +61,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
+            className="w-full bg-[#512ED9] text-white font-bold py-2 px-4 rounded hover:opacity-90 transition duration-200"
           >
             ENTRAR
           </button>
